@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { userRandomFemale } from './helpers/user';
 import './App.css';
 
 import { CardHeader } from './components/CardHeader';
@@ -6,15 +7,12 @@ import { CardBody } from './components/CardBody';
 import { CardFooter } from './components/CardFooter';
 import { CardArrows } from './components/CardArrows';
 
-import { userInicial } from './helpers/user';
-
 function App() {
-	const [user, setUser] = useState(userInicial);
+	const [users, setUsers] = useState([]);
 
-	// useEffect(() => {
-	// 	setUser(userInicial);
-	// }, []);
-	console.log(user);
+	useEffect(() => {
+		userRandomFemale(setUsers);
+	}, []);
 
 	return (
 		<>
@@ -25,12 +23,14 @@ function App() {
 				</div>
 			</header>
 			<main>
-				<div className='card'>
-					<CardHeader user={user} />
-					<CardBody user={user} />
-					<CardFooter />
-					<CardArrows />
-				</div>
+				{users.map((user) => (
+					<div key={user.login.uuid} className='card'>
+						<CardHeader user={user} />
+						<CardBody user={user} />
+						<CardFooter />
+						<CardArrows />
+					</div>
+				))}
 			</main>
 		</>
 	);
