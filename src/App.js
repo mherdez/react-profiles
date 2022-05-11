@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { userRandomFemale } from './helpers/user';
+import { userRandomFemale } from './helpers/getUsuario';
 import './App.css';
 
 import { CardHeader } from './components/CardHeader';
