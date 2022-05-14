@@ -1,12 +1,11 @@
-export const CardBody = ({ user }) => {
-	const { name } = user;
+export const CardBody = ({ textos }) => {
 	return (
 		<div className='card-body'>
 			<div className='card-text'>
-				<p>Hi, My name is</p>
+				<p>{textos.parrafo}</p>
 			</div>
 			<div className='card-title'>
-				<h5>{`${name.first} ${name.last}`}</h5>
+				<h5>{textos.main}</h5>
 			</div>
 		</div>
 	);

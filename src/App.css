@@ -133,8 +133,7 @@ ul {
 		box-sizing: border-box;
 		margin: 0 50px 20px;
 		padding: 0;
-
-		border: solid green 1px;
+		overflow: hidden;
 }
 
 /* li {
@@ -156,8 +155,6 @@ li {
 		height: 65px;
 		overflow: hidden;
 
-		border: solid 1px red;
-
 		list-style: none;
 
 		cursor: pointer;
@@ -172,14 +169,6 @@ li img {
 .active {
 		transform: translateY(-61px);
 }
-
-.no-active {
-		transform: translateY(0px);
-}
-
-/* li img:hover {
-		transform: translateY(-61px);
-} */
 
 .arrows {
 		position: absolute;

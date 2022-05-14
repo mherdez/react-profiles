@@ -1,31 +1,63 @@
-export const CardFooter = ({ users }) => {
+export const CardFooter = ({ users, cambiaTextos }) => {
 	const clase = (e) => {
 		document
-			.querySelectorAll('li img')
-			.forEach((icono) => (icono.className = 'no-active'));
+			.querySelectorAll('li > img')
+			.forEach((icono) => (icono.className = ''));
 		e.target.className = 'active';
+		cambiaTextos(e.target.name);
 	};
 
 	return (
 		<div className='card-footer'>
 			<ul>
-				<li onMouseEnter={clase}>
-					<img src='/assets/img/user.svg' alt='icon' />
+				<li>
+					<img
+						name='user'
+						src='/assets/img/user.svg'
+						alt='icon'
+						onMouseEnter={clase}
+						className='active'
+					/>
 				</li>
-				<li onMouseEnter={clase}>
-					<img src='/assets/img/email.svg' alt='icon' />
+				<li>
+					<img
+						name='email'
+						src='/assets/img/email.svg'
+						alt='icon'
+						onMouseEnter={clase}
+					/>
 				</li>
-				<li onMouseEnter={clase}>
-					<img src='/assets/img/birthday.svg' alt='icon' />
+				<li>
+					<img
+						name='birthday'
+						src='/assets/img/birthday.svg'
+						alt='icon'
+						onMouseEnter={clase}
+					/>
 				</li>
-				<li onMouseEnter={clase}>
-					<img src='/assets/img/address.svg' alt='icon' />
+				<li>
+					<img
+						name='address'
+						src='/assets/img/address.svg'
+						alt='icon'
+						onMouseEnter={clase}
+					/>
 				</li>
-				<li onMouseEnter={clase}>
-					<img src='/assets/img/phone.svg' alt='icon' />
+				<li>
+					<img
+						name='phone'
+						src='/assets/img/phone.svg'
+						alt='icon'
+						onMouseEnter={clase}
+					/>
 				</li>
-				<li onMouseEnter={clase}>
-					<img src='/assets/img/password.svg' alt='icon' />
+				<li>
+					<img
+						name='password'
+						src='/assets/img/password.svg'
+						alt='icon'
+						onMouseEnter={clase}
+					/>
 				</li>
 			</ul>
 		</div>
