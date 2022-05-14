@@ -4,6 +4,8 @@ html, body {
 		box-sizing: border-box;
 		margin: 0;
 		padding: 0;
+
+		user-select: none;
 }
 
 body {
@@ -76,6 +78,8 @@ main {
 		border-bottom: #cccccc 1px solid;
 
 		text-align: center;
+
+		pointer-events: none; /*evita el drag en la imagen */
 }
 
 .card-header img {
@@ -129,6 +133,8 @@ ul {
 		box-sizing: border-box;
 		margin: 0 50px 20px;
 		padding: 0;
+
+		border: solid green 1px;
 }
 
 /* li {
@@ -147,25 +153,33 @@ li {
 		display: block;
 
 		width: 50px;
-		max-height: 65px;
+		height: 65px;
 		overflow: hidden;
 
+		border: solid 1px red;
+
 		list-style: none;
+
+		cursor: pointer;
 }
 
 li img {
 		transform: translateY(15px);
 
-		transition: all 500ms ease;
+		transition: all 400ms ease;
 }
 
 .active {
 		transform: translateY(-61px);
 }
 
-li img:hover {
-		transform: translateY(-61px);
+.no-active {
+		transform: translateY(0px);
 }
+
+/* li img:hover {
+		transform: translateY(-61px);
+} */
 
 .arrows {
 		position: absolute;
@@ -179,9 +193,34 @@ li img:hover {
 }
 
 .arrow-left, .arrow-right {
+		position: absolute;
+		top: 45%;
+
+		padding: 0 25px;
+
 		font-size: 2.5rem;
 		color: #cccccc;
 
 		cursor: pointer;
 		opacity: 1;
+}
+
+.arrow-left {
+		left: 0;
+}
+
+.arrow-right {
+		right: 0;
+}
+
+.arrow-left:hover {
+		transform: translateX(-3px);
+
+		color: #1bb600;
+}
+
+.arrow-right:hover {
+		transform: translateX(3px);
+
+		color: #1bb600;
 }

@@ -1,4 +1,5 @@
-const URL = 'https://randomuser.me/api/?gender=female';
+const URL =
+	'https://randomuser.me/api/?gender=female&results=10';
 
 export const userInicial = {
 	gender: 'female',
@@ -61,8 +62,8 @@ export const userInicial = {
 	nat: 'FI',
 };
 
-export const userRandomFemale = async (setUsers) => {
+export const userRandomFemale = async () => {
 	const resultado = await fetch(URL);
 	const { results } = await resultado.json();
-	setUsers(results);
+	return results;
 };
