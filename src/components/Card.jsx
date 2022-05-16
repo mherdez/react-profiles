@@ -12,37 +12,23 @@ import {
 export const Card = ({ users, newUser }) => {
 	const [actual, setActual] = useState(0);
 	const [user, setUser] = useState(users[actual]);
-	const [textos, setTextos] = useState({
-		parrafo: 'Hi, My name is',
-		main: `${user.name.first} ${user.name.last}`,
-		icono: 'user',
-	});
+	const [textos, setTextos] = useState({});
 
 	const previo = () => {
+		setActual(actual - 1);
 		if (actual === 0) {
 			setActual(0);
 		}
-		setActual(actual - 1);
 		setUser(users[actual]);
-		setTextos({
-			parrafo: 'Hi, My name is',
-			main: `${user.name.first} ${user.name.last}`,
-			icono: 'user',
-		});
 	};
 
 	const siguiente = () => {
+		setActual(actual + 1);
 		if (actual === users.length - 1) {
 			// newUser();
 			setActual(users.length - 1);
 		}
-		setActual(actual + 1);
 		setUser(users[actual]);
-		setTextos({
-			parrafo: 'Hi, My name is',
-			main: `${user.name.first} ${user.name.last}`,
-			icono: 'user',
-		});
 	};
 
 	const cambiaTextos = (icono) => {
@@ -104,7 +90,6 @@ export const Card = ({ users, newUser }) => {
 	return (
 		<>
 			<div className='card'>
-				<h1>{actual}</h1>
 				<CardHeader user={user} />
 				<CardBody textos={textos} />
 				<CardFooter
