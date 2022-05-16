@@ -1,4 +1,11 @@
-export const CardFooter = ({ users, cambiaTextos }) => {
+import { computeHeadingLevel } from '@testing-library/react';
+import { useEffect, useState } from 'react';
+
+export const CardFooter = ({
+	users,
+	cambiaTextos,
+	textos,
+}) => {
 	const clase = (e) => {
 		document
 			.querySelectorAll('li > img')
@@ -16,7 +23,9 @@ export const CardFooter = ({ users, cambiaTextos }) => {
 						src='/assets/img/user.svg'
 						alt='icon'
 						onMouseEnter={clase}
-						className='active'
+						className={
+							textos.icono === 'user' ? 'active' : ''
+						}
 					/>
 				</li>
 				<li>
@@ -25,6 +34,9 @@ export const CardFooter = ({ users, cambiaTextos }) => {
 						src='/assets/img/email.svg'
 						alt='icon'
 						onMouseEnter={clase}
+						className={
+							textos.icono === 'email' ? 'active' : ''
+						}
 					/>
 				</li>
 				<li>
@@ -33,6 +45,9 @@ export const CardFooter = ({ users, cambiaTextos }) => {
 						src='/assets/img/birthday.svg'
 						alt='icon'
 						onMouseEnter={clase}
+						className={
+							textos.icono === 'birthday' ? 'active' : ''
+						}
 					/>
 				</li>
 				<li>
@@ -41,6 +56,9 @@ export const CardFooter = ({ users, cambiaTextos }) => {
 						src='/assets/img/address.svg'
 						alt='icon'
 						onMouseEnter={clase}
+						className={
+							textos.icono === 'address' ? 'active' : ''
+						}
 					/>
 				</li>
 				<li>
@@ -49,6 +67,9 @@ export const CardFooter = ({ users, cambiaTextos }) => {
 						src='/assets/img/phone.svg'
 						alt='icon'
 						onMouseEnter={clase}
+						className={
+							textos.icono === 'phone' ? 'active' : ''
+						}
 					/>
 				</li>
 				<li>
@@ -57,6 +78,9 @@ export const CardFooter = ({ users, cambiaTextos }) => {
 						src='/assets/img/password.svg'
 						alt='icon'
 						onMouseEnter={clase}
+						className={
+							textos.icono === 'password' ? 'active' : ''
+						}
 					/>
 				</li>
 			</ul>

@@ -15,26 +15,35 @@ export const Card = ({ users, newUser }) => {
 	const [textos, setTextos] = useState({
 		parrafo: 'Hi, My name is',
 		main: `${user.name.first} ${user.name.last}`,
+		icono: 'user',
 	});
 
 	const previo = () => {
-		setActual(actual - 1);
-		if (actual < 0) {
+		if (actual === 0) {
 			setActual(0);
 		}
+		setActual(actual - 1);
+		setUser(users[actual]);
+		setTextos({
+			parrafo: 'Hi, My name is',
+			main: `${user.name.first} ${user.name.last}`,
+			icono: 'user',
+		});
 	};
 
 	const siguiente = () => {
-		setActual(actual + 1);
-		if (actual + 1 >= users.length) {
-			newUser();
+		if (actual === users.length - 1) {
+			// newUser();
 			setActual(users.length - 1);
 		}
-	};
-
-	useEffect(() => {
+		setActual(actual + 1);
 		setUser(users[actual]);
-	}, [actual]);
+		setTextos({
+			parrafo: 'Hi, My name is',
+			main: `${user.name.first} ${user.name.last}`,
+			icono: 'user',
+		});
+	};
 
 	const cambiaTextos = (icono) => {
 		switch (icono) {
@@ -42,36 +51,48 @@ export const Card = ({ users, newUser }) => {
 				setTextos({
 					parrafo: 'Hi, My name is',
 					main: `${user.name.first} ${user.name.last}`,
+					icono: 'user',
 				});
 				break;
 			case 'email':
 				setTextos({
 					parrafo: 'My email address is',
-					main: `deja lo veo`,
+					main: `${user.email}`,
+					icono: 'email',
 				});
 				break;
 			case 'birthday':
 				setTextos({
 					parrafo: 'My birthday is',
-					main: `deja lo veo`,
+					main: `${user.dob.date.slice(
+						8,
+						10
+					)}/${user.dob.date.slice(
+						5,
+						7
+					)}/${user.dob.date.slice(0, 4)}`,
+					icono: 'birthday',
 				});
 				break;
 			case 'address':
 				setTextos({
 					parrafo: 'My address is',
-					main: `deja lo veo`,
+					main: `${user.location.street.number} ${user.location.street.name}`,
+					icono: 'address',
 				});
 				break;
 			case 'phone':
 				setTextos({
 					parrafo: 'My phone number is',
-					main: `deja lo veo`,
+					main: `${user.phone}`,
+					icono: 'phone',
 				});
 				break;
 			case 'password':
 				setTextos({
 					parrafo: 'My password is',
-					main: `deja lo veo`,
+					main: `${user.login.password}`,
+					icono: 'password',
 				});
 				break;
 
@@ -83,16 +104,18 @@ export const Card = ({ users, newUser }) => {
 	return (
 		<>
 			<div className='card'>
+				<h1>{actual}</h1>
 				<CardHeader user={user} />
 				<CardBody textos={textos} />
 				<CardFooter
 					user={user}
 					cambiaTextos={cambiaTextos}
+					textos={textos}
 				/>
 				<div className='arrows'>
 					<div
 						className='arrow-left'
-						hidden={user.login.uuid === users[0].login.uuid}
+						hidden={actual === 0}
 						onClick={previo}
 					>
 						<AiOutlineArrowLeft />
@@ -101,10 +124,7 @@ export const Card = ({ users, newUser }) => {
 					<div
 						className='arrow-right'
 						onClick={siguiente}
-						// hidden={
-						// 	user.login.uuid ===
-						// 	users[users.length - 1].login.uuid
-						// }
+						hidden={actual === users.length - 1}
 					>
 						<AiOutlineArrowRight />
 					</div>
