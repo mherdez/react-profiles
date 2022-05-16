@@ -1,11 +1,4 @@
-import { computeHeadingLevel } from '@testing-library/react';
-import { useEffect, useState } from 'react';
-
-export const CardFooter = ({
-	users,
-	cambiaTextos,
-	textos,
-}) => {
+export const CardFooter = ({ cambiaTextos, textos }) => {
 	const clase = (e) => {
 		document
 			.querySelectorAll('li > img')
