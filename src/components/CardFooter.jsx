@@ -74,12 +74,12 @@ export const CardFooter = ({
 				</li>
 				<li>
 					<img
-						name='password'
+						name='username'
 						src='/assets/img/password.svg'
 						alt='icon'
 						onMouseEnter={clase}
 						className={
-							textos.icono === 'password' ? 'active' : ''
+							textos.icono === 'username' ? 'active' : ''
 						}
 					/>
 				</li>
